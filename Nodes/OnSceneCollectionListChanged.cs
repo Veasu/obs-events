@@ -1,0 +1,28 @@
+using OBSWebsocketDotNet.Types.Events;
+using OBSWebsocketDotNet.Types;
+using Warudo.Core.Attributes;
+using Warudo.Core.Graphs;
+using Newtonsoft.Json.Linq;
+
+namespace veasu.obsevents
+{
+  [NodeType(Id = "com.veasu.obsevents.scenecollectionlistchanged", Title = "On Scene Collection List Changed", Category = "OBS Events")]
+  public class OnSceneCollectionListChangedNode : Node
+  {
+    [FlowOutput]
+    public Continuation Exit;
+
+
+
+    protected override void OnCreate()
+    {
+      Subscribe<SceneCollectionListChangedEventArgs>(it =>
+      {
+
+        InvokeFlow("Exit");
+      }, true);
+    }
+
+
+  }
+}
