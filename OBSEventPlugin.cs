@@ -124,14 +124,14 @@ namespace veasu.obsevents {
      DoDisconnect();
     }
    
-    [DataInput(-598)]
-    [Label("Auto Reconnect")]
-    [HiddenIf(nameof(IsConnected))]
-    private bool AutoReconnect = false;
+    // [DataInput(-598)]
+    // [Label("Auto Reconnect")]
+    // [HiddenIf(nameof(IsConnected))]
+    // private bool AutoReconnect = false;
 
-    [Markdown(-597, false, false)]
-    [HiddenIf(nameof(IsConnected))]
-    public string HeartbeatString = "Auto Reconnect Will Attempt To Reconnect Every Minute";
+    // [Markdown(-597, false, false)]
+    // [HiddenIf(nameof(IsConnected))]
+    // public string HeartbeatString = "Auto Reconnect Will Attempt To Reconnect Every Minute";
 
     private bool AttemptFirstLogin = false;
 
@@ -193,12 +193,12 @@ namespace veasu.obsevents {
         AttemptFirstLogin = true;
       }
 
-      if (AutoReconnect && IsDisconnected()) {
-        UniTask.Void(async () => {
-          await UniTask.Delay(TimeSpan.FromMinutes(1));
-          DoConnect();
-        });
-      }
+      // if (AutoReconnect && IsDisconnected()) {
+      //   UniTask.Void(async () => {
+      //     await UniTask.Delay(TimeSpan.FromMinutes(1));
+      //     DoConnect();
+      //   });
+      // }
 
       while(_actions.Count > 0)
       {
